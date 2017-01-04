@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,15 +14,22 @@ namespace Easy_Clone
 		{
 
 
-			System.Diagnostics.Process process = new System.Diagnostics.Process();
-			System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+			try
 			{
-				WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden,
-				FileName = "cmd.exe",
-				Arguments = "/C git clone" + Clipboard.GetText()
-			};
-			process.StartInfo = startInfo;
-			process.Start();
+				Process.Start("cmd.exe",
+					" /k 'git clone " + Clipboard.GetText(TextDataFormat.Text) + " " +
+					System.Reflection.Assembly.GetEntryAssembly().Location);
+
+			}
+			catch(Exception e)
+			{
+
+				MessageBox.Show("Please make sure you have text in clipboard." + e.Message);
+			}
+			while ( Console.ReadLine() == "")
+			{
+				
+			}
 		}
 	}
 }
