@@ -5,10 +5,10 @@ using System.Windows.Forms;
 
 namespace Easy_Clone
 {
-	static class Program
+	public class Program
 	{
 		[STAThread]
-		private static void Main()
+		public static void Main()
 		{
 			try
 			{
@@ -27,6 +27,11 @@ namespace Easy_Clone
 			{
 				Environment.Exit(0);
 			}
+		}
+
+		public void Test()
+		{
+			
 		}
 	}
 }
